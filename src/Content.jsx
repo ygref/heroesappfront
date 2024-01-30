@@ -41,8 +41,8 @@ export function Content() {
   return (
     <div>
       <h1>Welcome to React!</h1>
-      <PlayersIndex players={players} />
-      <CharactersIndex characters={characters} />
+      {/* <PlayersIndex players={players} />
+      <CharactersIndex characters={characters} /> */}
       <PlayersCharactersShow playersCharacter={playerscharacters} />
     </div>
   );
