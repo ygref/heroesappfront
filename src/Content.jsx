@@ -2,10 +2,20 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { PlayersIndex } from "./PlayersIndex";
 import { CharactersIndex } from "./CharactersIndex";
+import { PlayersCharactersShow } from "./PlayersCharacters";
 
 export function Content() {
   const [players, setPlayers] = useState([]);
   const [characters, setCharacters] = useState([]);
+  const [playerscharacters, setPlayersCharacters] = useState([]);
+
+  const handleShowPlayersCharacters = () => {
+    console.log("handleShowPlayersCharacters");
+    axios.get("http://localhost:3000/players_characters.json").then((response) => {
+      console.log(response.data);
+      setPlayersCharacters(response.data);
+    });
+  };
 
   const handleIndexPlayers = () => {
     console.log("handleIndexPlayers");
@@ -23,6 +33,8 @@ export function Content() {
     });
   };
 
+  useEffect(handleShowPlayersCharacters, []);
+
   useEffect(handleIndexCharacters, []);
 
   useEffect(handleIndexPlayers, []);
@@ -31,6 +43,7 @@ export function Content() {
       <h1>Welcome to React!</h1>
       <PlayersIndex players={players} />
       <CharactersIndex characters={characters} />
+      <PlayersCharactersShow playersCharacter={playerscharacters} />
     </div>
   );
 }
