@@ -9,41 +9,36 @@ export function Content() {
   const [characters, setCharacters] = useState([]);
   const [playerscharacters, setPlayersCharacters] = useState([]);
 
-  const handleIndexPlayersCharacters = () => {
-    console.log("handleIndexPlayersCharacters");
-    axios.get("http://localhost:3000/players_characters.json").then((response) => {
-      console.log(response.data);
-      setPlayersCharacters(response.data);
-    });
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [playersResponse, charactersResponse, playersCharactersResponse] = await Promise.all([
+          axios.get("http://localhost:3000/players.json"),
+          axios.get("http://localhost:3000/characters.json"),
+          axios.get("http://localhost:3000/players_characters.json"),
+        ]);
 
-  const handleIndexPlayers = () => {
-    console.log("handleIndexPlayers");
-    axios.get("http://localhost:3000/players.json").then((response) => {
-      console.log(response.data);
-      setPlayers(response.data);
-    });
-  };
+        setPlayers(playersResponse.data);
+        setCharacters(charactersResponse.data);
+        setPlayersCharacters(playersCharactersResponse.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
-  const handleIndexCharacters = () => {
-    console.log("handleIndexCharacters");
-    axios.get("http://localhost:3000/characters.json").then((response) => {
-      console.log(response.data);
-      setCharacters(response.data);
-    });
-  };
+    fetchData();
+  }, []);
 
-  useEffect(handleIndexPlayersCharacters, []);
-
-  useEffect(handleIndexCharacters, []);
-
-  useEffect(handleIndexPlayers, []);
   return (
     <div>
       <h1>HeroesApp Team</h1>
-      <PlayersIndex players={players} />
-      <CharactersIndex characters={characters} />
-      {/* <PlayersCharactersIndex playersCharacter={playerscharacters} /> */}
+      {/* <PlayersIndex players={players} />
+      <CharactersIndex characters={characters} /> */}
+      {playerscharacters.length > 0 ? (
+        <PlayersCharactersIndex playerscharacters={playerscharacters} />
+      ) : (
+        <p>Loading players characters...</p>
+      )}
     </div>
   );
 }
