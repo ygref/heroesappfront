@@ -7,7 +7,6 @@ export function CharactersIndex(props) {
           <h2>Name: {character.character_name}</h2>
           <h2>Role: {character.character_role}</h2>
           <h2>Role Tier: {character.role_tier}</h2>
-          <h2>Thumbnail: {character.thumbnail}</h2>
         </div>
       ))}
     </div>
