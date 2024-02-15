@@ -1,3 +1,4 @@
+import "./styles.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { PlayersIndex } from "./PlayersIndex";
@@ -30,7 +31,7 @@ export function Content() {
   }, []);
 
   return (
-    <div>
+    <div className="background-image font-white">
       <h1>HeroesApp Team</h1>
       {/* <PlayersIndex players={players} />
       <CharactersIndex characters={characters} /> */}
