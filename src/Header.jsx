@@ -1,8 +1,12 @@
+import "./styles.css";
+
 export function Header() {
   return (
-    <header>
+    <header className="background-image font-white margin-padding">
       <nav>
-        <a href="#">Home</a>
+        <h3>
+          <a href="#">Home</a>
+        </h3>
       </nav>
     </header>
   );

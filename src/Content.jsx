@@ -31,8 +31,8 @@ export function Content() {
   }, []);
 
   return (
-    <div className="background-image font-white">
-      <h1>HeroesApp Team</h1>
+    <div className="background-image font-white margin-padding">
+      <h1 className="text-align-center">HeroesApp</h1>
       {/* <PlayersIndex players={players} />
       <CharactersIndex characters={characters} /> */}
       {playerscharacters.length > 0 ? (

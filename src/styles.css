@@ -1,8 +1,3 @@
-.blue-background {
-  background-color: blue;
-}
-
-
 .background-image {
   background-image: url('https://i.imgur.com/OcFygJu.jpg');
   background-size: cover;
@@ -11,4 +6,20 @@
 
 .font-white {
  color: white;
+}
+
+.margin-padding {
+  margin: 0px;
+  padding: 1px;
+}
+
+Header,
+Footer,
+Content {
+  overflow: auto;
+}
+
+
+.text-align-center {
+  text-align: center;
 }
